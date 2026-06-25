@@ -13,6 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+<<<<<<< HEAD
+import androidx.compose.ui.graphics.vector.ImageVector
+=======
+>>>>>>> 7a0db4f9dfd618cf59f2e480738276d42bb5c2a5
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp

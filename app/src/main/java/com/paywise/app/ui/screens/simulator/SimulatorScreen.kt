@@ -10,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -141,10 +142,10 @@ fun SimulatorScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                ScenarioPresetChip("Car Loan", Icons.Default.DirectionsCar, viewModel.simulationType == SimulationType.LOAN) {
+                ScenarioPresetChip("Car Loan", Icons.Default.DirectionsCar, viewModel.simulationType == SimulationType.LOAN, modifier = Modifier.weight(1f)) {
                     viewModel.applyPreset(SimulationType.LOAN)
                 }
-                ScenarioPresetChip("Rent Increase", Icons.Default.Home, viewModel.simulationType == SimulationType.RENT_INCREASE) {
+                ScenarioPresetChip("Rent Increase", Icons.Default.Home, viewModel.simulationType == SimulationType.RENT_INCREASE, modifier = Modifier.weight(1f)) {
                     viewModel.applyPreset(SimulationType.RENT_INCREASE)
                 }
             }
@@ -153,10 +154,10 @@ fun SimulatorScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                ScenarioPresetChip("Travel", Icons.Default.Flight, viewModel.simulationType == SimulationType.TRAVEL) {
+                ScenarioPresetChip("Travel", Icons.Default.Flight, viewModel.simulationType == SimulationType.TRAVEL, modifier = Modifier.weight(1f)) {
                     viewModel.applyPreset(SimulationType.TRAVEL)
                 }
-                ScenarioPresetChip("Custom", Icons.Default.Edit, viewModel.simulationType == SimulationType.CUSTOM) {
+                ScenarioPresetChip("Custom", Icons.Default.Edit, viewModel.simulationType == SimulationType.CUSTOM, modifier = Modifier.weight(1f)) {
                     viewModel.applyPreset(SimulationType.CUSTOM)
                 }
             }
@@ -225,14 +226,14 @@ fun SimulatorScreen(
                         ResultRow("Current Balance", "${String.format("%.0f", viewModel.currentSalary)}")
                         ResultRow("New Remaining", "${String.format("%.0f", result.newRemainingBalance)}",
                             if (result.newRemainingBalance > 0) PrimaryGreen else AccentRed)
-                        Divider(modifier = Modifier.padding(vertical = 8.dp), color = Color(0xFF2D333B))
+                        HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = Color(0xFF2D333B))
                         ResultRow("Savings Reduction", "${String.format("%.1f", result.savingsReductionPercent)}%", AccentOrange)
                         ResultRow("Health Score Impact", "-${result.healthScoreImpact} points", AccentRed)
                         ResultRow("New Health Score", "${(viewModel.currentHealthScore - result.healthScoreImpact).coerceAtLeast(0)}",
                             if (viewModel.currentHealthScore - result.healthScoreImpact > 50) PrimaryGreen else AccentOrange)
 
                         if (result.goalDelays.isNotEmpty()) {
-                            Divider(modifier = Modifier.padding(vertical = 8.dp), color = Color(0xFF2D333B))
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp), color = Color(0xFF2D333B))
                             Text("Goal Delays", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = AccentRed)
                             result.goalDelays.forEach { delay ->
                                 Text(
@@ -271,11 +272,12 @@ fun ScenarioPresetChip(
     label: String,
     icon: ImageVector,
     isSelected: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Surface(
         onClick = onClick,
-        modifier = Modifier.weight(1f),
+        modifier = modifier,
         shape = RoundedCornerShape(12.dp),
         color = if (isSelected) PrimaryGreen.copy(alpha = 0.15f) else MaterialTheme.colorScheme.surface,
         border = if (isSelected) BorderStroke(1.dp, PrimaryGreen) else null
