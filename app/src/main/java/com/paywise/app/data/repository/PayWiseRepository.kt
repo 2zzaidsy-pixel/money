@@ -1,5 +1,6 @@
 package com.paywise.app.data.repository
 
+import com.paywise.app.data.local.CategoryTotal
 import com.paywise.app.domain.model.*
 import kotlinx.coroutines.flow.Flow
 

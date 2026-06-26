@@ -70,15 +70,18 @@ class BillingManager @Inject constructor(
 
     private fun querySkuDetails() {
         val skuList = listOf(
-            QueryProductDetailsParams.Product.create(
-                ProductType.SUBS, PREMIUM_MONTHLY_SKU
-            ),
-            QueryProductDetailsParams.Product.create(
-                ProductType.SUBS, PREMIUM_YEARLY_SKU
-            ),
-            QueryProductDetailsParams.Product.create(
-                ProductType.SUBS, PREMIUM_FREE_TRIAL_SKU
-            )
+            QueryProductDetailsParams.Product.newBuilder()
+                .setProductId(PREMIUM_MONTHLY_SKU)
+                .setProductType("subs")
+                .build(),
+            QueryProductDetailsParams.Product.newBuilder()
+                .setProductId(PREMIUM_YEARLY_SKU)
+                .setProductType("subs")
+                .build(),
+            QueryProductDetailsParams.Product.newBuilder()
+                .setProductId(PREMIUM_FREE_TRIAL_SKU)
+                .setProductType("subs")
+                .build()
         )
 
         val params = QueryProductDetailsParams.newBuilder().setProductList(skuList).build()
@@ -92,7 +95,7 @@ class BillingManager @Inject constructor(
 
     private fun queryPurchases() {
         billingClient?.queryPurchasesAsync(
-            QueryPurchasesParams.newBuilder().setProductType(ProductType.SUBS).build()
+            QueryPurchasesParams.newBuilder().setProductType("subs").build()
         ) { billingResult, purchases ->
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
                 handlePurchases(purchases)
