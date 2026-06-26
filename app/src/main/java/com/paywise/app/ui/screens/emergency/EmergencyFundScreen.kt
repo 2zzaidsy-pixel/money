@@ -125,7 +125,7 @@ fun EmergencyFundScreen(
                     }
 
                     AnimatedCircularProgress(
-                        percentage = (viewModel.coverageMonths / 12f).coerceIn(0f, 1f),
+                        percentage = (viewModel.coverageMonths.toFloat() / 12f).coerceIn(0f, 1f),
                         size = 140.dp,
                         strokeWidth = 12.dp,
                         progressColor = coverageColor,

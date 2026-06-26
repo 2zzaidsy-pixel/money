@@ -55,4 +55,5 @@
     <string name="widget_loading">Loading...</string>
     <string name="widget_spent_label">Spent today:</string>
     <string name="widget_open_app">Open app to view details</string>
+    <string name="default_web_client_id">REPLACE_WITH_YOUR_WEB_CLIENT_ID</string>
 </resources>

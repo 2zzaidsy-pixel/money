@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -208,7 +209,7 @@ fun GoalDetailScreen(
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                     Button(
-                        onClick = { viewModel.addToSuccess {} },
+                        onClick = { viewModel.addToGoal {} },
                         modifier = Modifier.fillMaxWidth().height(48.dp),
                         enabled = viewModel.addAmount.toDoubleOrNull() != null && (viewModel.addAmount.toDoubleOrNull() ?: 0.0) > 0,
                         shape = RoundedCornerShape(12.dp),

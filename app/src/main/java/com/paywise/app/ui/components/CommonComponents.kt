@@ -105,7 +105,7 @@ fun AnimatedCircularProgress(
             drawCircle(
                 color = trackColor,
                 radius = radius,
-                topLeft = topLeft,
+                center = Offset(size.toPx() / 2f, size.toPx() / 2f),
                 style = stroke
             )
 
@@ -195,7 +195,7 @@ fun HealthScoreGauge(
                 useCenter = false,
                 topLeft = topLeft,
                 size = Size(radius * 2, radius * 2),
-                style = stroke.copy(width = strokeWidth.toPx() + 2.dp.toPx())
+                style = Stroke(width = strokeWidth.toPx() + 2.dp.toPx(), cap = StrokeCap.Round)
             )
 
             // Progress

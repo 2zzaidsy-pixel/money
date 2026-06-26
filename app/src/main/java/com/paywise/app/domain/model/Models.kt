@@ -9,22 +9,22 @@ import java.util.UUID
 // --- ENUMS ---
 
 enum class ExpenseCategory(val displayName: String, val isEssential: Boolean) {
-    RENT("Rent", essential = true),
-    ELECTRICITY("Electricity", essential = true),
-    WATER("Water", essential = true),
-    INTERNET("Internet", essential = true),
-    LOANS("Loans", essential = true),
-    FUEL("Fuel", essential = true),
-    GROCERIES("Groceries", essential = true),
-    RESTAURANTS("Restaurants", essential = false),
-    COFFEE("Coffee", essential = false),
-    ENTERTAINMENT("Entertainment", essential = false),
-    SHOPPING("Shopping", essential = false),
-    SUBSCRIPTIONS("Subscriptions", essential = false),
-    MEDICAL("Medical", essential = true),
-    CAR_REPAIRS("Car Repairs", essential = false),
-    HOME_MAINTENANCE("Home Maintenance", essential = true),
-    FAMILY_EMERGENCY("Family Emergency", essential = true)
+    RENT("Rent", isEssential = true),
+    ELECTRICITY("Electricity", isEssential = true),
+    WATER("Water", isEssential = true),
+    INTERNET("Internet", isEssential = true),
+    LOANS("Loans", isEssential = true),
+    FUEL("Fuel", isEssential = true),
+    GROCERIES("Groceries", isEssential = true),
+    RESTAURANTS("Restaurants", isEssential = false),
+    COFFEE("Coffee", isEssential = false),
+    ENTERTAINMENT("Entertainment", isEssential = false),
+    SHOPPING("Shopping", isEssential = false),
+    SUBSCRIPTIONS("Subscriptions", isEssential = false),
+    MEDICAL("Medical", isEssential = true),
+    CAR_REPAIRS("Car Repairs", isEssential = false),
+    HOME_MAINTENANCE("Home Maintenance", isEssential = true),
+    FAMILY_EMERGENCY("Family Emergency", isEssential = true)
 }
 
 enum class GoalType(val displayName: String) {

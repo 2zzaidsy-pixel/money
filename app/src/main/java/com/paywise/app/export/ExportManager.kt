@@ -40,22 +40,22 @@ class ExportManager @Inject constructor(
             val pdfDoc = PdfDocument(writer)
             val document = Document(pdfDoc)
 
-            document.add(Paragraph("PayWise Financial Report").setFontSize(24).setBold())
+            document.add(Paragraph("PayWise Financial Report").setFontSize(24f).setBold())
             document.add(Paragraph("Generated: ${displayDateFormat.format(Date())}"))
             document.add(Paragraph(" "))
 
-            document.add(Paragraph("Salary Overview").setFontSize(18).setBold())
+            document.add(Paragraph("Salary Overview").setFontSize(18f).setBold())
             document.add(Paragraph("Salary: ${String.format("%.0f", salaryInfo.salary)}"))
             document.add(Paragraph("Spent: ${String.format("%.0f", salaryInfo.totalSpent)}"))
             document.add(Paragraph("Remaining: ${String.format("%.0f", salaryInfo.remaining)}"))
             document.add(Paragraph(" "))
 
-            document.add(Paragraph("Financial Health Score: ${healthScore.score}").setFontSize(18).setBold())
+            document.add(Paragraph("Financial Health Score: ${healthScore.score}").setFontSize(18f).setBold())
             document.add(Paragraph("Level: ${healthScore.level.name}"))
             document.add(Paragraph(" "))
 
             if (expenses.isNotEmpty()) {
-                document.add(Paragraph("Expenses").setFontSize(18).setBold())
+                document.add(Paragraph("Expenses").setFontSize(18f).setBold())
                 val table = Table(UnitValue.createPercentArray(floatArrayOf(40f, 30f, 30f)))
                 table.useAllAvailableWidth()
                 table.addHeaderCell("Category")
@@ -71,7 +71,7 @@ class ExportManager @Inject constructor(
             }
 
             if (goals.isNotEmpty()) {
-                document.add(Paragraph("Financial Goals").setFontSize(18).setBold())
+                document.add(Paragraph("Financial Goals").setFontSize(18f).setBold())
                 goals.forEach { goal ->
                     val progress = if (goal.targetAmount > 0) (goal.currentAmount / goal.targetAmount * 100) else 0.0
                     document.add(Paragraph("${goal.title}: ${String.format("%.0f", goal.currentAmount)} / ${String.format("%.0f", goal.targetAmount)} (${String.format("%.0f", progress)}%)"))
