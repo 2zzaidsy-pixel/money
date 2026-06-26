@@ -4,7 +4,6 @@ import android.os.Bundle
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.google.firebase.perf.FirebasePerformance
-import com.google.firebase.perf.metric.Trace
 import com.paywise.app.domain.model.*
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -113,7 +112,7 @@ class AnalyticsManager @Inject constructor(
         crashlytics.setUserId(userId)
     }
 
-    fun startTrace(traceName: String): Trace {
-        return FirebasePerformance.getInstance().newTrace(traceName).apply { start() }
+    fun startTrace(traceName: String) {
+        FirebasePerformance.getInstance().newTrace(traceName).start()
     }
 }
